@@ -2,4 +2,4 @@ wheel
 pytest
 black
 google-auth
-google-auth-oathlib
+google-auth-oauthlib
