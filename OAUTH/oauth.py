@@ -10,9 +10,9 @@ from google.auth.transport.requests import Request
 credentials = None
 
 if os.path.exists("token.pickle"):
-    print ("Loading Credentials from file")
+    print("Loading Credentials from file")
     with open("token.pickle","rb") as token:
-        credentials = pickle.load(token)
+        credentials=pickle.load(token)
 
 # If there are no valid credentials available, then either refresh the token or log in.
 if not credentials or not credentials.valid:
@@ -39,7 +39,7 @@ if not credentials or not credentials.valid:
 
 
 youtube = build("youtube", "v3", credentials=credentials)
-request  = youtube.playListItems().list(part="status", playlistId="")
+request = youtube.playListItems().list(part="status", playlistId="")
 
 response = request.execute()
 
@@ -47,3 +47,4 @@ for item in response["items"]:
     vid_id = item["contentDetails"]["videoId"]
     yt_link = f"https://youtu.be/{vid_id}"
     print(yt_link)
+
